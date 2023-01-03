@@ -11,10 +11,13 @@ public class SceneNameDrawer : PropertyDrawer
     GUIContent[] m_SceneNames;
     readonly string[] k_ScenePathSplitters = { "/", ".unity" };
 
-
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if (EditorBuildSettings.scenes.Length == 0) return;
+        if (EditorBuildSettings.scenes.Length == 0)
+        {
+            EditorGUI.LabelField(position, "BuildSettings‚ÉScene‚ªˆê‚Â‚à“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            return;
+        }
         if (m_SceneIndex == -1)
             Setup(property);
 

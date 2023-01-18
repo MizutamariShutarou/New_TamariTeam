@@ -46,4 +46,3 @@ public class SantaStateMachine : StateMachineBase
         _jump.Init(this);
     }
 }
-}

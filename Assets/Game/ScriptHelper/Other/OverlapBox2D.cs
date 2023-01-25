@@ -54,12 +54,22 @@ namespace Helper
         [SerializeField]
         private bool _isDrawGizmo = true;
         [SerializeField]
-        private Color _gizmoColor = Color.red;
+        private Color _gizmoHitColor = Color.red;
+        [SerializeField]
+        private Color _gizmoNotHitColor = Color.blue;
         public void OnDrawGizmos(Transform origin)
         {
             if (_isDrawGizmo)
             {
-                Gizmos.color = _gizmoColor;
+                Vector2 pos = new Vector2(origin.position.x + _offset.x * _dir, origin.position.y + _offset.y);
+                if (Physics2D.OverlapBoxAll(pos, _size, 0.0f, _targetLayer).Length > 0)
+                {
+                    Gizmos.color = _gizmoHitColor;
+                }
+                else
+                {
+                    Gizmos.color = _gizmoNotHitColor;
+                }
 
                 var posX = origin.position.x + _offset.x * _dir;
                 var posY = origin.position.y + _offset.y;

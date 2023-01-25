@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SnowRabbitStateBase : IState
+public class SnowRabbitStateBase : IState
 {
     [System.NonSerialized]
     protected SnowRabbitStateMachine _snowRabbitStateMachine;
@@ -11,17 +11,17 @@ public abstract class SnowRabbitStateBase : IState
     {
         _snowRabbitStateMachine = snowRabbitStateMachine;
     }
-    public void Enter()
+    public virtual void Enter()
     {
         throw new System.NotImplementedException();
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
         throw new System.NotImplementedException();
     }
 
-    public void Update()
+    public virtual void Update()
     {
         throw new System.NotImplementedException();
     }

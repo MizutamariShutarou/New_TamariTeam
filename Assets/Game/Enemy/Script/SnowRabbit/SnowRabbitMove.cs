@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SnowRabbitMove : SnowRabbitStateBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float _speed = default;
 
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
+        //if(ƒ†ƒjƒIƒ“‚É“¥‚Ü‚ê‚½‚ç)
+        {
+            _snowRabbitStateMachine.TransitionTo(_snowRabbitStateMachine.snowRabbitDeath);
+        }
     }
 }

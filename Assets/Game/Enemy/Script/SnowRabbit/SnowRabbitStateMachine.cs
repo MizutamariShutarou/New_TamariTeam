@@ -20,10 +20,11 @@ public class SnowRabbitStateMachine : StateMachineBase
 
     public SnowRabbitDeath snowRabbitDeath => _snowRabbitDeath; 
 
-    private SnowRabbitController _snowRabbitController;
+    private SnowRabbitController _controller;
+    public SnowRabbitController Controller => _controller;  
     public void Init(SnowRabbitController snowRabbitController)
     {
-        _snowRabbitController = snowRabbitController;
+        _controller = snowRabbitController;
         Initialize(_snowRabbitIdle);
     }
 

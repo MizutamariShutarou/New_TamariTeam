@@ -9,8 +9,20 @@ using UnityEngine;
 [System.Serializable]
 public class SnowRabbitIdle : SnowRabbitStateBase
 {
+    public override void Enter()
+    {
+        Debug.Log("EnterIdle");
+    }
     public override void Update()
     {
-        //if(プレイヤーの接近をRayで検知したら)
+        if(_snowRabbitStateMachine.Controller.InCamera())
+        {
+            _snowRabbitStateMachine.TransitionTo(_snowRabbitStateMachine.snowRabbitMove);
+            return;
+        }
+    }
+    public override void Exit()
+    {
+        Debug.Log("ExitIdle");
     }
 }

@@ -5,14 +5,27 @@ using UnityEngine;
 [System.Serializable]
 public class SnowRabbitMove : SnowRabbitStateBase
 {
-    [SerializeField]
-    private float _speed = default;
-
+    public override void Enter()
+    {
+        Debug.Log("EnterMove");
+        _snowRabbitStateMachine.Controller.CanMove = true;
+    }
+    public override void Exit()
+    {
+        Debug.Log("ExitMove");
+        _snowRabbitStateMachine.Controller.CanMove = false;
+    }
     public override void Update()
     {
-        //if(ƒ†ƒjƒIƒ“‚É“¥‚Ü‚ê‚½‚ç)
+        if(!_snowRabbitStateMachine.Controller.InCamera())
         {
-            _snowRabbitStateMachine.TransitionTo(_snowRabbitStateMachine.snowRabbitDeath);
+            _snowRabbitStateMachine.TransitionTo(_snowRabbitStateMachine.snowRabbitIdle);
+            return;
         }
+        //if(_snowRabbitStateMachine.Controller.Status.Hp <= 0)
+        //{
+        //    _snowRabbitStateMachine.TransitionTo(_snowRabbitStateMachine.snowRabbitDeath);
+        //    return;
+        //}
     }
 }
